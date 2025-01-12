@@ -14,9 +14,9 @@ int acc_x = 0, acc_y = 0, acc_z = 0;
 void setup() {
 
   LPF_Init();
-  LPF_Set_Alpha(0, 20);
-  LPF_Set_Alpha(1, 20);
-  LPF_Set_Alpha(2, 20);
+  LPF_Set_Alpha(0, 10);
+  LPF_Set_Alpha(1, 10);
+  LPF_Set_Alpha(2, 10);
 
   Serial.begin(38400);
   cli();
@@ -36,11 +36,27 @@ void loop() {
   acc_y = LPF_Get_Filtered_Value(1, acc_y);
   acc_z = LPF_Get_Filtered_Value(2, acc_z);
 
+  /*
   Serial.print(acc_x);
   Serial.print(",");
   Serial.print(acc_y);
   Serial.print(",");
   Serial.print(acc_z);
   Serial.println();
+  */
+
+
+  Serial.print(ADXL345_Get_Acc_X());
+  Serial.print(",");
+  Serial.print(acc_x);
+  Serial.println();
+
+
+  /*Serial.print(ADXL345_Get_Acc_X());
+  Serial.print(",");
+  Serial.print(ADXL345_Get_Acc_Y());
+  Serial.print(",");
+  Serial.print(ADXL345_Get_Acc_Z());
+  Serial.println();*/
   delay(20);
 }
